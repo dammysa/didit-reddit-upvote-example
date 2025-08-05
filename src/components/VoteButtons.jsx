@@ -9,6 +9,11 @@ import {
   TbArrowBigUpFilled,
 } from "react-icons/tb";
 import { FaSpinner } from "react-icons/fa";
+import { useState } from "react";
+
+// I'm adding an error for the user rather than just showing an error on the server
+
+
 
 export function VoteButtons({ upvote, downvote, votes, existingVote }) {
   const { pending, data, method, action } = useFormStatus();

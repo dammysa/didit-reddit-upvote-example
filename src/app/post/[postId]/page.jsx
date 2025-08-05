@@ -3,6 +3,20 @@ import { CommentList } from "@/components/CommentList";
 import { Vote } from "@/components/Vote";
 import { db } from "@/db";
 
+export async function generateMetadata({ params }) {
+  const postId = params.postId;
+
+  const res = await db.query(`SELECT title FROM posts WHERE id = $1`, [postId]); //Was trying to make a const of rows not res and that was the issue.
+
+  const post = res.rows[0];
+  console.log(res);
+
+  return {
+    title: post.title,
+    description: "Post by ",
+  };
+}
+
 export default async function SinglePostPage({ params }) {
   const postId = params.postId;
 
